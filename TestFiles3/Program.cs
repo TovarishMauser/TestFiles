@@ -18,7 +18,7 @@ namespace TestFiles3
                 dirpath = Console.ReadLine();
 
                 if ((isDirectoryNameValid(dirpath) == true) & Directory.Exists(dirpath))
-                {                    
+                {
                     break;
                 }
                 else
@@ -35,23 +35,23 @@ namespace TestFiles3
         static double sizeOfFolder(string folder, ref double totalSize)
         {
             try
-            {                
+            {
                 DirectoryInfo dirInf = new DirectoryInfo(folder);
                 DirectoryInfo[] dirArray = dirInf.GetDirectories();
                 FileInfo[] fileInf = dirInf.GetFiles();
-                
+
                 foreach (FileInfo file in fileInf)
                 {
                     totalSize = totalSize + file.Length;
                 }
-                
+
                 foreach (DirectoryInfo df in dirArray)
                 {
                     sizeOfFolder(df.FullName, ref totalSize);
                 }
-                
+
                 return totalSize;
-            }            
+            }
             catch (Exception e)
             {
                 Console.WriteLine("Что - то пошло не так... " + e);
